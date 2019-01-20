@@ -3,74 +3,97 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Server</title>
-
+    <title>Type-DB | @ViewData["Title"]</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/@@fortawesome/fontawesome-free/css/all.css" />
+        <link rel="stylesheet" href="~/css/default.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/@@fortawesome/fontawesome-free/css/all.min.css" />
+        <link rel="stylesheet" href="~/css/default.min.css" />
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" href="~/favicon.ico" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Server</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand mb-1 pr-3" asp-action="Index">
+                <i class="fas fa-database"></i> &nbsp;Type-DB Server
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav px-2">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index">
+                            Dashboard
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-action="Authentication">Authentication</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-action="Triggers">Triggers</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-action="Migration">Migration</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-action="Scripts">Scripts</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-action="Settings">Settings</a>
+                    </li>
+                </ul>
+                @*<form class="form-inline my-2 my-lg-0 ml-auto">
+            <input class="form-control form-control-dark mr-sm-2" type="search" placeholder="Search in all instances" />
+        </form>*@
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item px-2 mr-5">
+                        <a class="nav-link" asp-action="RedirectToAPI">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span class="bordered">
+                            Access to the API
+                        </span></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item px-2">
+                        <a class="nav-link" asp-action="Account"><i class="fas fa-user"></i> Hi Anonymous</a>
+                    </li>
+                    <li class="nav-item pl-2">
+                        <a class="nav-link" asp-action="Lock"><i class="fas fa-lock"></i> Lock Intance</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        </div>
+    </nav>
 
-    <footer class="border-top footer text-muted">
+    @RenderBody()
+
+    <footer class="py-3 bg-white fixed-bottom">
         <div class="container">
-            &copy; 2019 - Server - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <p class="m-0 col-md-6 small text-dark">Copyright &copy; @DateTime.Now.Year <a href="https://github.com/Type-DB" target="_blank">Type-DB</a> - All Rights Reserved</p>
+                <p class="m-0 col-md-6 text-right small text-dark">Crafted with 💗 by <a href="https://twitter.com/clint_network">Clint.Network</a>.</p>
+            </div>
         </div>
     </footer>
 
     <environment include="Development">
+        <script src="~/js/default.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
-        </script>
+        <script src="~/js/default.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

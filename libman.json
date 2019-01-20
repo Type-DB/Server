@@ -9,6 +9,10 @@
     {
       "library": "jquery@3.3.1",
       "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "@fortawesome/fontawesome-free@5.6.3",
+      "destination": "wwwroot\\lib\\@fortawesome/fontawesome-free"
     }
   ]
 }

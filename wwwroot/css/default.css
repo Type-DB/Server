@@ -1,0 +1,31 @@
+/*.navbar-expand-lg
+{
+    border-bottom: 3px solid #db2d23;
+}*/
+
+.form-control-dark
+{
+    background-color: #222222;
+    border: 0pt none;
+    border-radius: 0;
+}
+
+.nav-link .bordered
+{
+    padding-bottom: 3px;
+    border-bottom: 1px dotted #AAAAAA;
+}
+
+img.logo
+{
+    float: left;
+    height: 155px;
+    margin-right: 30px;
+}
+
+@media (min-width: 1500px) {
+    .container
+    {
+        max-width: 1400px !important;
+    }
+}
