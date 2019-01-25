@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TypeDB.Server.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class DefaultController : Controller
     {
         [Route("")]
