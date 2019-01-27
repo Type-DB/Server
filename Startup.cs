@@ -12,18 +12,26 @@ namespace TypeDB.Server
     public class Startup
     {
         public IConfiguration Configuration { get; }
+
         private readonly Core Core;
+        public readonly Instance Instance;
 
         public Startup(IConfiguration configuration)
         {
-            Core = new Core(Mode.Standalone);
+            this.Core = new Core(Mode.Standalone | Mode.OnlyForBinding);
+            this.Instance = this.Core
+                .Configure(new Configuration()
+                {
+                })
+                .Build();
 
             Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<Core>(Core);
+            services.AddSingleton<Core>(this.Core);
+            services.AddSingleton<Instance>(this.Instance);
 
             services.AddMvc();
 
